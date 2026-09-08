@@ -193,6 +193,14 @@ export const content = {
   careers: {
     title: "Rejoignez l'équipe",
     subtitle: 'Les opportunités internes seront publiées ici lorsqu’elles seront ouvertes.',
-    jobs: [],
+    jobs: [] as Array<{
+      slug: string;
+      title: string;
+      department: string;
+      location: string;
+      type: string;
+      description: string;
+      requirements: string[];
+    }>,
   },
 };
