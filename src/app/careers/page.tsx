@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { content } from '@/lib/content';
-import { Briefcase, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Briefcase, MapPin, ArrowRight } from 'lucide-react';
 
 export default function CareersPage() {
     return (
@@ -66,10 +66,6 @@ export default function CareersPage() {
                                     <div className="flex items-center gap-1.5">
                                         <MapPin size={16} />
                                         {job.location}
-                                    </div>
-                                    <div className="flex items-center gap-1.5">
-                                        <Clock size={16} />
-                                        {job.date}
                                     </div>
                                 </div>
                             </div>
