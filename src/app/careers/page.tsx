@@ -41,7 +41,7 @@ export default function CareersPage() {
                 <div className="grid gap-6">
                     {content.careers.jobs.map((job, index) => (
                         <motion.div
-                            key={job.id}
+                            key={job.slug}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
