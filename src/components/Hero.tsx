@@ -18,10 +18,10 @@ export const Hero = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-20 flex flex-col items-center text-center max-w-5xl">
         <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>
-          <span className="inline-flex px-4 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-700 font-bold text-xs md:text-sm uppercase tracking-widest mb-7">
-            {content.hero.badge}
-          </span>
-        </motion.div>
+  <span className="text-brand-600 font-bold text-sm uppercase tracking-widest mb-6 block">
+    {content.hero.badge}
+  </span>
+</motion.div>
 
         <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .08 }} className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 text-slate-900 leading-[1.08] font-heading">
           {content.hero.title.part1}<br />
