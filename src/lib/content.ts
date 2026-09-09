@@ -16,9 +16,9 @@ import {
 export const content = {
   businessName: 'TalentiQues',
   hero: {
-    badge: 'Carrière & marchés francophones',
+    badge: 'CARRIÈRE & IMAGE PROFESSIONNELLE',
     title: {
-      part1: 'Valorisez votre profil.',
+      part1: 'Valorisez votre image.',
       highlight: 'Donnez plus de force à votre candidature',
     },
     description:
