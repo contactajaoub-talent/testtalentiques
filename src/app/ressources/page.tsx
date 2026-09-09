@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { ResourceCatalog } from '@/components/ResourceCatalog';
 import { Resources } from '@/components/Resources';
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default function ResourcesPage() {
         <p className="text-lg text-slate-600 max-w-2xl mx-auto mt-5">Des contenus pratiques pour avancer en autonomie. Les premières ressources seront ajoutées progressivement.</p>
       </section>
       <Resources />
+      <ResourceCatalog />
       <Footer />
     </main>
   );

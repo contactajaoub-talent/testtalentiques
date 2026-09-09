@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
+import { CRMForm } from './CRMForm';
 import { content } from '@/lib/content';
 
 export const Contact = () => {
@@ -83,39 +84,7 @@ export const Contact = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-primary-200 to-blue-200 rounded-3xl blur-2xl opacity-30 -z-10 transform translate-y-4"></div>
                         <div className="bg-white/80 backdrop-blur-xl border border-slate-100 p-8 md:p-10 rounded-3xl shadow-xl relative overflow-hidden">
 
-                            <form className="space-y-6 relative z-10">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
-                                        <label className="text-sm text-slate-600 font-medium ml-1">Prénom</label>
-                                        <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all" placeholder="Jean" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label className="text-sm text-slate-600 font-medium ml-1">Nom</label>
-                                        <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all" placeholder="Dupont" />
-                                    </div>
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm text-slate-600 font-medium ml-1">Email</label>
-                                    <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all" placeholder="jean.dupont@exemple.com" />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <label className="text-sm text-slate-600 font-medium ml-1">Message</label>
-                                    <textarea rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all resize-none" placeholder="Parlez-nous de vos objectifs..." />
-                                </div>
-
-                                <button type="button" className="group w-full py-4 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-500/25 transition-all active:scale-[0.98] flex items-center justify-center gap-2 relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                                    <span className="relative flex items-center gap-2">
-                                        Envoyer ma demande <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                                    </span>
-                                </button>
-
-                                <p className="text-center text-xs text-slate-500 mt-4">
-                                    En envoyant ce formulaire, vous acceptez notre politique de confidentialité.
-                                </p>
-                            </form>
+                            <CRMForm type="contact" source="Contact Talentiques" title="Parlons de votre projet"/>
                         </div>
                     </motion.div>
                 </div>

@@ -1,6 +1,7 @@
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Accompaniment } from '@/components/Accompaniment';
+import { CRMForm } from '@/components/CRMForm';
 import { Process } from '@/components/Process';
 
 export const metadata = {
@@ -18,6 +19,7 @@ export default function AccompanimentPage() {
         <p className="text-lg text-slate-600 max-w-3xl mx-auto mt-5">Un parcours personnalisé pour clarifier votre objectif, renforcer votre dossier et organiser vos candidatures sur le marché ciblé.</p>
       </section>
       <Accompaniment />
+      <section id="demande" className="px-4 py-16 bg-slate-50"><div className="max-w-3xl mx-auto"><CRMForm type="accompagnement" title="Parlons de votre projet"/></div></section>
       <Process />
       <Footer />
     </main>

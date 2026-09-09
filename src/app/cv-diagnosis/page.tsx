@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, FileText, Sparkles, CheckCircle, AlertCircle, TrendingUp, Zap, Target, ArrowRight } from 'lucide-react';
+import { CRMForm } from '@/components/CRMForm';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
@@ -249,6 +250,7 @@ export default function CVDiagnosisPage() {
                 </div>
             </section>
 
+            <section className="px-4 py-16 bg-slate-50" id="diagnostic-contact"><div className="max-w-3xl mx-auto"><CRMForm type="diagnostic" title="Recevoir un suivi personnalisé"/></div></section>
             {/* Benefits Section */}
             <section className="py-20 px-4 bg-white">
                 <div className="container mx-auto max-w-6xl">

@@ -1,12 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { CRMModal, type CRMModalState } from './CRMModal';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Check, ShieldCheck, Sparkles } from 'lucide-react';
 import { content } from '@/lib/content';
 import { cn } from '@/lib/utils';
 
-export const Services = () => (
+export const Services = () => {
+  const [modal,setModal]=useState<CRMModalState|null>(null);
+  return (<>
   <section id="services" className="py-24 bg-slate-50 relative overflow-hidden">
     <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-200/30 rounded-full blur-[128px] pointer-events-none" />
     <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -31,9 +34,9 @@ export const Services = () => (
               <ul className="space-y-3 mb-8 flex-1">
                 {service.features.map((feature) => <li key={feature} className="flex items-start gap-3 text-sm text-slate-700"><span className="mt-0.5 p-1 rounded-full bg-brand-50 text-brand-600"><Check size={13} strokeWidth={3}/></span>{feature}</li>)}
               </ul>
-              <a href={service.paypal} target="_blank" rel="noopener noreferrer" className={cn('w-full rounded-xl px-6 py-4 font-bold text-center flex items-center justify-center gap-2 transition-all', service.popular ? 'bg-brand-600 text-white hover:bg-brand-700 shadow-lg shadow-brand-500/20' : 'border border-brand-200 text-brand-700 hover:bg-brand-50')}>
+              <button type="button" onClick={()=>setModal({type:'service',title:service.title,offerId:index===0?'OPT-PRO':'OPT-ETU'})} className={cn('w-full rounded-xl px-6 py-4 font-bold text-center flex items-center justify-center gap-2 transition-all', service.popular ? 'bg-brand-600 text-white hover:bg-brand-700 shadow-lg shadow-brand-500/20' : 'border border-brand-200 text-brand-700 hover:bg-brand-50')}>
                 {service.cta}<ArrowUpRight size={18}/>
-              </a>
+              </button>
               <p className="mt-4 text-xs text-slate-500 flex items-center justify-center gap-2"><ShieldCheck size={14}/>Paiement sécurisé via PayPal</p>
             </motion.article>
           );
@@ -41,4 +44,6 @@ export const Services = () => (
       </div>
     </div>
   </section>
-);
+  <CRMModal config={modal} onClose={()=>setModal(null)}/>
+  </>);
+};
