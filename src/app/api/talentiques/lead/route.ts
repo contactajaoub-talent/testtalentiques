@@ -127,10 +127,11 @@ try {
   );
 }
     if (!result || typeof result !== 'object' || !('ok' in result) || result.ok !== true) {
+      console.error('CRM_REJECTED', JSON.stringify(result));
       const message = result && typeof result === 'object' && 'error' in result ? String(result.error) : '';
       return error(/^(Offre non disponible|Ressource non disponible|Champ obligatoire|Nom, email et pays obligatoires|Trop de demandes récentes|Lien LinkedIn invalide|CV trop volumineux|Format CV)/.test(message)?message:'La demande n’a pas pu être enregistrée. Vérifiez les informations et réessayez.',502);
     }
-    const r = result as Record<string,unknown>;
+    console.log('CRM_RESULT', JSON.stringify(result));const r = result as Record<string,unknown>;
     const paymentUrl = String(r.payment_url || (r.duplicate && payload.request_type === 'service' ? (payload.offer_id === 'OPT-PRO' ? 'https://www.paypal.com/ncp/payment/X28ZHEKETU8FA' : payload.offer_id === 'OPT-ETU' ? 'https://www.paypal.com/ncp/payment/268NRKMDVVJB2' : '') : ''));
     let safePayment = '';
     try {const u = new URL(paymentUrl);if(u.protocol==='https:' && ['paypal.com','www.paypal.com'].includes(u.hostname))safePayment=u.href;}catch{}
