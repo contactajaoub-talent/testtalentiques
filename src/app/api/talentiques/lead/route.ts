@@ -96,8 +96,36 @@ export async function POST(request: NextRequest) {
       response = await fetch(endpoint, {method:'POST',redirect:'follow',cache:'no-store',
         headers:{'Content-Type':'application/json'},body:JSON.stringify({secret,action:'submission',payload,file}),signal:controller.signal});
     } finally {clearTimeout(timer);}
-    if (!response.ok) return error('La demande n’a pas pu être enregistrée. Réessayez.',502);
-    const result: unknown = await response.json();
+    const rawResponse = await response.text();
+
+if (!response.ok) {
+  console.error('CRM_HTTP_ERROR', {
+    status: response.status,
+    response: rawResponse.slice(0, 500),
+  });
+
+  return error(
+    'La demande n’a pas pu être enregistrée. Réessayez.',
+    502
+  );
+}
+
+let result: unknown;
+
+try {
+  result = JSON.parse(rawResponse);
+} catch {
+  console.error('CRM_INVALID_JSON', {
+    status: response.status,
+    contentType: response.headers.get('content-type'),
+    response: rawResponse.slice(0, 500),
+  });
+
+  return error(
+    'La demande a atteint le CRM mais sa réponse est invalide.',
+    502
+  );
+}
     if (!result || typeof result !== 'object' || !('ok' in result) || result.ok !== true) {
       const message = result && typeof result === 'object' && 'error' in result ? String(result.error) : '';
       return error(/^(Offre non disponible|Ressource non disponible|Champ obligatoire|Nom, email et pays obligatoires|Trop de demandes récentes|Lien LinkedIn invalide|CV trop volumineux|Format CV)/.test(message)?message:'La demande n’a pas pu être enregistrée. Vérifiez les informations et réessayez.',502);
